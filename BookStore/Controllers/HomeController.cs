@@ -50,7 +50,7 @@ namespace BookStore.Controllers
         {
             int a = Int32.Parse(Request.Params["a"]);
             int h = Int32.Parse(Request.Params["h"]);
-            double s = a * h / 2;
+            double s = a * h /(double) 2;
             return "<h2>Площадь треугольника с основанием " + a + " и высотой " + h + " равна " + s + "</h2>";
         }
 
@@ -69,6 +69,13 @@ namespace BookStore.Controllers
             return "<p>Browser: " + browser + "</p><p>User-Agent: " + user_agent + "</p><p>Url запроса: " + url +
                 "</p><p>Реферер: " + referrer + "</p><p>IP-адрес: " + ip + "</p>";
         }
+        public ActionResult Menu()
+        {
+            List<MenuItem> menuItems = db.MenuItems.ToList();
+
+            return PartialView(menuItems);
+        }
+
     }
     public class HtmlResult : ActionResult
     {
